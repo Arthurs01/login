@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <style>
+.confirm_btns, .confirm_btns a{
+    font-size:23px ;
+    text-align: center;
+    text-decoration: none;
+    margin-top: 55px;
+    transition: all ease .7s;
+    color: rgb(89, 172, 144);
+    
+}
+.confirm_btns a{
+    padding: 5px 20px 5px 20px;
+     border: 1px solid rgb(45, 94, 94);
+    border-radius: 5px;
+   
+    
+}
+.confirm_btns a:hover{
+     border: 1px solid aqua;
+    
+    font-size: 25px;
+    transition: all ease .7s;
+    
+}
+.thead  tr td{
+    background-color: #0F2027;
+    color: aqua;
+    border-bottom: 1px solid #233e49;
+    padding-bottom: 20px;
+}
+.tbody  tr td{
+    background-color: #0F2027;
+    color: rgb(7, 153, 153);
+    border: none;
+    border-bottom: 1px solid #172a31;
+}
+.main_nav{
+    text-align: center;
+    list-style: none;
+}
+
+.main_nav ul{
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+    gap:30px;
+    padding:0;
+    list-style: none;    
+}
+
+.main_nav ul a{
+    text-decoration: none;
+    color: aqua;
+}
+.main_nav ul a:hover{
+    color: rgb(0, 102, 255);
+}
+  </style>
+
+
+
+    <%- include('components/meta'); %>
+    <title>Login</title>
+  </head>
+  <body class="bg-dark">
+    <main class="container mt-5">
+      <header id="header">
+        <%- include('components/nav')%>
+        <h2>X-music</h2>
+        <p>User register</p>
+      </header>
+      <% api.forEach((da)=> { %>
+        <table class="table table-dark">
+            <thead class="thead">
+                <tr>
+                    <td>ID</td>
+                    <td>USER</td>
+                    <td>NAME</td>
+                    <td>ROL</td>
+                    <td>PASS</td>                    
+                </tr>
+            </thead>
+            <tbody class="tbody">
+        <tr>
+            <td><%= da.id %></td>
+            <td><%= da.user %></td>
+            <td><%= da.name %></td>
+            <td><%= da.rol %></td>
+            <td><%= da.pass %></td>
+        </td>
+    </tr>
+</tbody>
+</table>
+<td>
+    <div class="confirm_btns">
+        <p>Eliminar Usuario</p>
+        <hr>
+        <br>
+        <a href="/del/<%= da.id %>" class="text-danger">Accept</a>&nbsp;&nbsp;
+        <a href="/" class="text-secondary">Cancel</a>
+
+    </div>
+        <% }) %>
+            <%- include('./components/bootstrap')%>
+    </main>
+  </body>
+</html>
+

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('components/meta'); %>
+    <title>Users</title>
+  </head>
+  <body>
+    <main class="container mt-4">
+      <header id="header">
+        <%- include('components/nav')%>
+        <h2>X-music</h2>
+        <p>Selecciona</p>
+        <button class="btn btn-primary">Boton</button>
+      </header>
+      <section class="data_fetch">
+        <table>
+          <thead>
+            <tr>
+              <td>id</td>
+              <td>name</td>
+              <td>email</td>              
+            </tr>
+          </thead>
+          
+          <tbody>
+            <% api.forEach((da)=> { %>
+            <tr>
+              <td><%= da.id %></td>
+              <td><%= da.name %></td>
+              <td><%= da.email %></td>           
+            </tr>
+            <% }) %>
+            
+          </tbody>
+        </table>
+        
+      </section>
+
+      <button class="btn btn-primary" onClick="changeColor()">Boton</button>
+    </main>
+    <%- include('./components/bootstrap')%>
+     <%-include('./components/changeColor')%>
+  </body>
+</html>

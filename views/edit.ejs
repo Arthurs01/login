@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+<style>
+  .main_nav{
+    text-align: center;
+    list-style: none;
+}
+
+.main_nav ul{
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+    gap:30px;
+    padding:0;
+    list-style: none;    
+}
+
+.main_nav ul a{
+    text-decoration: none;
+    color: aqua;
+}
+.main_nav ul a:hover{
+    color: rgb(0, 102, 255);
+}
+.btn{    
+    border:1px solid rgb(0, 162, 255);
+    width: 115px;    
+    z-index: 2;
+  }   
+  
+.btn:hover{
+    border:1px solid aqua;    
+}
+
+.form{
+    width: 250px;
+    margin: auto;
+    margin-top: 50px;
+    
+  }
+  .form-control::placeholder{
+    color: rgb(3, 111, 138);
+    
+}
+
+.form-control{    
+    background-color: rgba(0,0,0,0.1);
+    
+    border: 1px solid #4a8194;
+}
+.form-control:focus{    
+    background-color: rgba(0,0,0,0.2);
+}
+.form-select{    
+    background-color: rgba(0,0,0,0.2);
+    color: rgb(3, 111, 138);
+}
+</style>
+
+
+<%- include('components/meta'); %>
+<title>Login</title>
+  </head>
+  <body class="bg-dark">
+    <main class="container mt-5">
+      <header id="header">
+        <%- include('components/nav')%>
+        <h2>X-music</h2>
+        <p>User register</p>
+      </header>
+      <% if(api){ %>
+    <form action="/update" method="POST" class="form">
+      <input id="id" name="id" value="<%= api.id%>" hidden/><br>
+      <input class="text-center form-control text-primary" type="text" name="user" placeholder="User"value="<%= api.user%>" required /><br>
+      <input class="text-center form-control text-primary"type="text" name="name" placeholder="Full Name"value="<%= api.name%>" required /><br>
+      <!-- <input class="text-center form-control text-primary"type="text" name="pass" placeholder="Password"value="<%= api.pass%>" required /><br> -->
+      <select class="text-center form-select text-primary" name="rol" value="<%= api.rol %>">
+        <option value="admin">Admin</option>
+        <option value="user">User</option>
+      </select><br><br><br>
+            <div class="btns_login text-primary text-center">
+              <button class="btn text-primary" type="submit">Update</button>
+              <a href="/"class="btn text-secondary">Cancelar</a>
+            </div>
+            </form> 
+            <%- include('./components/bootstrap')%>
+            <% } %>         
+    </main>
+  </body>
+</html>
+

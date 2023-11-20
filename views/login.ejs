@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('components/meta'); %>
+    <title>Login</title>
+  </head>
+  <body>
+    <main class="container mt-5">
+      <header id="header">
+        <%- include('components/nav')%>
+        <h2 class="text-primary">X-Login</h2>
+        <p></p>
+      </header>
+      <h2 class="text-center">Login</h2>
+    <form action="auth" method="POST" class="form">
+      <input class="text-center form-control text-primary" type="text" placeholder="Username" name="user" required /><br><br>
+      <input class="text-center form-control text-primary"type="password" placeholder="Password" name="pass" required /><br><br>
+      <div class="btns_login text-primary text-center">
+      <button class="btn text-success "type="submit"><strong>Login</strong></button>&nbsp;&nbsp;&nbsp;
+      <a href="register " class="btn text-primary"><strong>Register</strong></a>
+    </div>
+  </form>
+</main>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+    <% if(typeof alert != "undefined"){ %>
+    <script>
+      Swal.fire({
+        title: '<%= alertTitle %>',
+        text: '<%= alertMessage %>',
+        icon: '<%= alertIcon %>',
+        showConfirmButton:'<%= showConfirmButton %>',
+        timer:'<%= timer %>'
+      }).then(()=>{
+        window.location='/<%= ruta %>'
+      })
+      </script>
+    <% } %>
+    
+  </body>
+</html>

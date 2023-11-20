@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('components/meta'); %>
+    <title>Home</title>
+  </head>
+  <body>
+    <main class="container mt-5">
+      <%- include('components/nav')%>
+      <header id="header">
+        <div class="header_flex">
+          <div class="welcome-left">
+            <h2 class="text-primary">X-Login</h2>
+            <p>Encrypted pass</p>
+          </div>
+          <% if (login) {%>
+          <div class="welcome-right">
+            <p><span class="text-secondary">User:</span> <span class=""><%= name %></span></p>
+            <a href="logout" class="text-secondary">Logout</a>
+          </div>
+        </div>
+      </header>
+      <br>
+      <br>
+
+      <section class="data_fetch">
+        <!-- <table class="table table-bordered table-striped text-center table-dark table-hover"> -->
+        <table class="table table-striped text-center table-hover">
+          <thead class="thead">
+            <div class="row">
+              <tr>
+                <td>ID</td>
+                <td>USER</td>
+                <td>NAME</td>
+                <td>ROL</td>
+                <td>ACTION</td>
+              </tr>
+
+            </div>
+          </thead>
+
+          <tbody class="tbody">
+            <% api.forEach((da)=> { %>
+            <tr>
+              <td><%= da.id %></td>
+              <td><%= da.user %></td>
+              <td><%= da.name %></td>
+              <td><%= da.rol %></td>
+              
+              <td>
+                <a href="/edit/<%= da.id %>" class="text-primary">Update</a>
+                <a href="/delete/<%= da.id %>" class="text-secondary">Delete</a>
+              </td>
+            </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      </section>
+      
+      
+
+      <% }else { %>
+
+      <div class="main_flex">      
+        <img src="imgs/allien.png" width="150" alt="Logo_inicio">
+        <br><br>
+      
+        <div class="btns_login">
+          <a href="/login"class="btn text-success">Login</a>&nbsp;&nbsp;&nbsp;
+          <a href="/register"class="btn text-primary">Register</a>
+      </div>
+      </div>
+      <% }%>
+
+      <section class="data_fetch"></section>
+    </main>
+
+
+
+
+    <%- include('./components/bootstrap')%>
+    <%-include('./components/changeColor')%>
+  </body>
+</html>
